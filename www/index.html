@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Free Image Hosting</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="shortcut icon" href="/asset/image/favicon.png" />
+    <link rel="bookmark" href="/asset/image/favicon.png" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/ionicons@4.5.6/dist/css/ionicons.min.css" rel="stylesheet">
+    <link href="/asset/css/notifyme.css" rel="stylesheet">
+    <link href="/asset/css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto"></ul>
+                <ul class="navbar-nav navbar-right">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container kv-main">
+        <div class="page-header">
+            <h1>Image Upload</h1> 5 MB max per file. 10 files max per request.
+        </div>
+        <form enctype="multipart/form-data">
+            <div class="form-group" style="max-height: 2000px;">
+                <input id="file" type="file" multiple class="file" data-overwrite-initial="false"
+                    data-min-file-count="1" name="file" accept="image/*">
+            </div>
+        </form>
+        <form id="upload_option" enctype="multipart/form-data">
+        </form>
+        <div id="showurl" style="display: none;">
+            <ul id="navTab" class="nav nav-tabs" role="tablist">
+                <li class="nav-item"><a class="nav-link active" id="imagedetail-tab" href="#imagedetail-panel"
+                        data-toggle="tab">URL</a></li>
+                <li class="nav-item"><a class="nav-link" id="htmlcode-tab" href="#htmlcode-panel"
+                        data-toggle="tab">HTML</a></li>
+                <li class="nav-item"><a class="nav-link" id="bbcode-tab" href="#bbcode-panel"
+                        data-toggle="tab">BBCode</a></li>
+                <li class="nav-item"><a class="nav-link" id="markdown-tab" href="#markdown-panel"
+                        data-toggle="tab">Markdown</a></li>
+            </ul>
+            <div id="navTabContent" class="tab-content" style="border:none;">
+                <div class="tab-pane fade show active" id="imagedetail-panel" role="tabpanel" aria-labelledby="imagedetail-tab">
+                    <fieldset><table class="table table-bordered"><tbody id="imagedetail"></tbody></table></fieldset>
+                </div>
+                <div class="tab-pane fade" id="htmlcode-panel" role="tabpanel" aria-labelledby="htmlcode-tab">
+                    <fieldset><table class="table table-bordered"><tbody id="htmlcode"></tbody></table></fieldset>
+                </div>
+                <div class="tab-pane fade" id="bbcode-panel" role="tabpanel" aria-labelledby="bbcode-tab">
+                    <fieldset><table class="table table-bordered"><tbody id="bbcode"></tbody></table></fieldset>
+                </div>
+                <div class="tab-pane fade" id="markdown-panel" role="tabpanel" aria-labelledby="markdown-tab">
+                    <fieldset><table class="table table-bordered"><tbody id="markdown"></tbody></table></fieldset>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer"></div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="text-muted">Copyright Ⓒ 2020 All rights reserved. 请勿上传违反中国大陆和香港法律的图片，违者后果自负. </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net-bs@1.10.21/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-lazyload@1.9.7/jquery.lazyload.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-fileinput@5.0.8/css/fileinput.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-fileinput@5.0.8/js/fileinput.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-fileinput@5.0.8/js/plugins/piexif.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-fileinput@5.0.8/js/plugins/sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-fileinput@5.0.8/js/plugins/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-fileinput@5.0.8/js/locales/zh.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-fileinput@5.0.8/themes/fas/theme.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@1.0.10/dist/purify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@4.1.2/dist/handlebars.min.js"></script>
+    <script id="image-template" type="text/x-handlebars-template">
+        <tr>
+            <td class="image-code-cover">
+                <img class="lazy" onload="DrawImage(this, 100, 100)" src="{{url}}">
+            </td>
+            <td>
+                <div class="dlinput_header">URL</div>
+                <div class="dlinput_container">
+                    <input class="form-control" type="text" onclick="this.select();" value="{{code}}">
+                </div>
+            </td>
+            <!-- <td style="width:260px;" class="advert"></td> -->
+        </tr>
+    </script>
+    <script src="/asset/js/upload.js"></script>
+</body>
+
+</html>
